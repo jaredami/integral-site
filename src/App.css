@@ -45,7 +45,6 @@ a {
   /* outline: 2px solid blue; */
   letter-spacing: 2px;
   font-size: 12px;
-  opacity: 0;
   transition: all 1s ease;
 }
 
@@ -53,8 +52,8 @@ a {
   position: absolute;
   color: #888;
   margin-left: 780px;
-  transition: all 0.3s ease;
   margin-right: 80px;
+  transition: all 0.3s ease;
 }
 
 .beige-text .stage-text-heading {
@@ -85,7 +84,8 @@ a {
 @media screen and (max-width: 1280px) {
   .stage-text {
     padding: 0px 100px;
-    margin-top: 450px;
+    /* margin-top: 450px; */
+    margin-top: 730px;
     margin-left: 0;
     margin-right: 5%;
     width: 100%;

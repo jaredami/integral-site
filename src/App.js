@@ -11,9 +11,6 @@ class App extends Component {
     this.spacing = (2 * Math.PI) / 8;
     this.start = (225 * Math.PI) / 180;
     this.radius = 250;
-    // this.xcenter = window.innerWidth / 2;
-    // this.xcenter = 300;
-    // this.ycenter = 300;
     this.step = 0.05;
     this.intervalTime = 100;
 
@@ -45,7 +42,6 @@ class App extends Component {
     this.updateWindowDimensions();
     window.addEventListener("resize", this.updateWindowDimensions);
     this.interval = setInterval(this.moveit, this.intervalTime);
-    console.log("test");
   }
   componentDidUpdate() {
     this.start = (225 * Math.PI) / 180;
@@ -120,11 +116,12 @@ class App extends Component {
     document.querySelector(".color-info").style.opacity = 0;
     this.interval = setInterval(this.moveit, this.intervalTime);
   }
-
+  // when circle is clicked, update the set to that color name so that it can be sent as a prop to stageText
   handleClick(event) {
     this.setState({
       selectedColor: event.target.name
     });
+    console.log(this.state.selectedColor);
   }
 
   render() {
@@ -141,14 +138,14 @@ class App extends Component {
 
     // loop through each color and retrieve the correct image and call getTop() and getLeft() to determine its placement
     let images = colors.map(color => {
-      // [replaced call to getTop and getLeft in style of each img with this stuff (might be worse)]
-      this.start = this.start + this.spacing; // adds spacing so that the next circle gets placed appropriately
-      let topVal = Math.floor(
-        this.state.ycenter + this.radius * Math.sin(this.start)
-      );
-      let leftVal = Math.floor(
-        this.state.xcenter + this.radius * Math.cos(this.start)
-      );
+      // [replaces call to getTop and getLeft in style of each img with this stuff (might be worse)]
+      // this.start = this.start + this.spacing;
+      // let topVal = Math.floor(
+      //   this.state.ycenter + this.radius * Math.sin(this.start)
+      // );
+      // let leftVal = Math.floor(
+      //   this.state.xcenter + this.radius * Math.cos(this.start)
+      // );
 
       return (
         <img
@@ -159,7 +156,7 @@ class App extends Component {
           src={require(`./images/${color}-circle.png`)}
           alt={color}
           // style={{ top: this.getTop(), left: this.getLeft() }}
-          style={{ top: topVal, left: leftVal }}
+          style={{ top: this.getTop(), left: this.getLeft() }}
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
           onClick={this.handleClick}
