@@ -4,7 +4,7 @@ class OrangeText extends Component {
   render() {
     return (
       <div className="orange-text">
-        <h1>Orange – StriveThrive</h1>
+        <h1>Orange / StriveThrive</h1>
         <ul>
           <li>Change and advancement are inherent in the scheme of things.</li>
           <li>

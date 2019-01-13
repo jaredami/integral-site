@@ -37,4 +37,30 @@
   font-family: "Cutive Mono", monospace;
   width: 800px;
   margin-left: 1000px;
+  transition: all 0.3s ease;
+}
+
+.beige-text h1 {
+  color: #6c6753;
+}
+.purple-text h1 {
+  color: #5c5672;
+}
+.red-text h1 {
+  color: #6d3130;
+}
+.blue-text h1 {
+  color: #1e4e5a;
+}
+.orange-text h1 {
+  color: #ac5e2e;
+}
+.green-text h1 {
+  color: #3e6c3d;
+}
+.yellow-text h1 {
+  color: #96792b;
+}
+.turquoise-text h1 {
+  color: #0c6c68;
 }

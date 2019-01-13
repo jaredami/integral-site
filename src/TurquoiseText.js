@@ -4,7 +4,7 @@ class TurquoiseText extends Component {
   render() {
     return (
       <div className="turquoise-text">
-        <h1>Turquoise – GlobalView</h1>
+        <h1>Turquoise / GlobalView</h1>
         <ul>
           <li>Sees multiple levels of interaction simultaneously</li>
           <li>

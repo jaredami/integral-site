@@ -4,7 +4,7 @@ class RedText extends Component {
   render() {
     return (
       <div className="red-text">
-        <h1>Red – PowerGods</h1>
+        <h1>Red / PowerGods</h1>
         <ul>
           <li>“The world is a jungle” – it’s survival of the fittest.</li>
           <li>In a world of haves and have-nots, it’s good to be a have</li>

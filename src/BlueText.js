@@ -4,7 +4,7 @@ class BlueText extends Component {
   render() {
     return (
       <div className="blue-text">
-        <h1>Blue - TruthForce</h1>
+        <h1>Blue / TruthForce</h1>
         <ul>
           <li>
             One sacrifices self to the transcendent Cause, Truth, or righteous

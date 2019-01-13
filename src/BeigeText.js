@@ -4,7 +4,7 @@ class BeigeText extends Component {
   render() {
     return (
       <div className="beige-text">
-        <h1>Beige – SurvivalSense</h1>
+        <h1>Beige / SurvivalSense</h1>
         <ul>
           <li>Driven by instincts and deep brain functions.</li>
           <li>

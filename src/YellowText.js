@@ -4,7 +4,7 @@ class YellowText extends Component {
   render() {
     return (
       <div className="yellow-text">
-        <h1>Yellow – FlexFlow</h1>
+        <h1>Yellow / FlexFlow</h1>
         <ul>
           <li>
             Life is a kaleidoscope of natural hierarchies, systems, and currents
