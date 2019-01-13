@@ -8,7 +8,7 @@
   transition: all 0.3s ease;
 }
 .color-circle:hover {
-  /* border: 10px solid #4f4f51; */
+  border: 10px solid #4f4f51;
   /* box-shadow: 0px 0px 0px 8px #4f4f51; */
   width: 188px;
   cursor: pointer;
@@ -22,7 +22,7 @@
   /* color: #4f4f51; */
   color: #888;
   position: absolute;
-  left: 850px;
+  left: 285px;
   top: 450px;
   /* outline: 2px solid blue; */
   font-family: "Cutive Mono", monospace;
@@ -30,4 +30,11 @@
   font-size: 14px;
   opacity: 0;
   transition: all 1s ease;
+}
+
+.stage-text {
+  color: #888;
+  font-family: "Cutive Mono", monospace;
+  width: 800px;
+  margin-left: 1000px;
 }

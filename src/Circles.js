@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import StageInfo from "./StageInfo";
+import StageText from "./StageText";
 
 class Circles extends Component {
   constructor(props) {
@@ -8,7 +9,8 @@ class Circles extends Component {
     this.spacing = (2 * Math.PI) / 8;
     this.start = (225 * Math.PI) / 180;
     this.radius = 300;
-    this.xcenter = window.innerWidth / 2;
+    // this.xcenter = window.innerWidth / 2;
+    this.xcenter = 400;
     this.ycenter = 400;
     this.step = 0.05;
     this.intervalTime = 100;
@@ -121,6 +123,7 @@ class Circles extends Component {
       <div>
         <div>{images}</div>
         <StageInfo color={this.state.hoveredColor} />
+        <StageText />
       </div>
     );
   }
