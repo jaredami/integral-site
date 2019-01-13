@@ -17,15 +17,17 @@ class Circles extends Component {
 
     this.state = {
       hoveredColor: "none",
+      selectedColor: "none",
       topVal: 0,
       leftVal: 0
     };
 
     this.getTop = this.getTop.bind(this);
     this.getLeft = this.getLeft.bind(this);
+    this.moveit = this.moveit.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
-    this.moveit = this.moveit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -65,19 +67,25 @@ class Circles extends Component {
   }
 
   // on mouse-over, set the state of hoverColor to the color being moused over so it can be passed as a prop to StageInfo
-  handleMouseEnter(e) {
+  handleMouseEnter(event) {
     this.setState({
-      hoveredColor: e.target.name
+      hoveredColor: event.target.name
     });
     document.querySelector(".color-info").style.opacity = 1;
     clearInterval(this.interval);
   }
-  handleMouseLeave(e) {
+  handleMouseLeave() {
     this.setState({
       hoveredColor: "none"
     });
     document.querySelector(".color-info").style.opacity = 0;
     this.interval = setInterval(this.moveit, this.intervalTime);
+  }
+
+  handleClick(event) {
+    this.setState({
+      selectedColor: event.target.name
+    });
   }
 
   render() {
@@ -94,7 +102,7 @@ class Circles extends Component {
 
     // loop through each color and retrieve the correct image and call getTop() and getLeft() to determine its placement
     let images = colors.map(color => {
-      // replaced call to getTop and getLeft in style of each img with this stuff (might be worse)
+      // [replaced call to getTop and getLeft in style of each img with this stuff (might be worse)]
       this.start = this.start + this.spacing; // adds spacing so that the next circle gets placed appropriately
       let topVal = Math.floor(
         this.ycenter + this.radius * Math.sin(this.start)
@@ -115,6 +123,7 @@ class Circles extends Component {
           style={{ top: topVal, left: leftVal }}
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
+          onClick={this.handleClick}
         />
       );
     });
@@ -123,7 +132,7 @@ class Circles extends Component {
       <div>
         <div>{images}</div>
         <StageInfo color={this.state.hoveredColor} />
-        <StageText />
+        <StageText color={this.state.selectedColor} />
       </div>
     );
   }

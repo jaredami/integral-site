@@ -7,7 +7,7 @@ class StageInfo extends Component {
     this.state = { hoveredColor: "none" };
     this.StageInfo = {
       none: { stage: "", name: "" },
-      beige: { stage: "Stage 1: Beige", name: "Survival Sense" },
+      beige: { stage: "Stage 1: Beige", name: "Survival Self" },
       purple: { stage: "Stage 2: Purple", name: "Tribal Order" },
       red: { stage: "Stage 3: Red", name: "Power Self" },
       blue: { stage: "Stage 4: Blue", name: "Absolute Order" },
