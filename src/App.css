@@ -1,19 +1,35 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Cutive Mono", monospace;
+}
+
+a {
+  text-decoration: none;
+}
+
+.App {
+  /* outline: 2px solid blue;
+  margin: 0 auto; */
+}
 .color-circle {
   box-sizing: border-box;
   position: absolute;
-  width: 180px;
+  width: 150px;
+  /* width: 180px; */
   /* border: 4px solid #888889; */
   /* border: 0px solid transparent; */
   border-radius: 50%;
   transition: all 0.3s ease;
 }
 .color-circle:hover {
-  border: 10px solid #4f4f51;
+  border: 8px solid #4f4f51;
   /* box-shadow: 0px 0px 0px 8px #4f4f51; */
-  width: 188px;
+  width: 160px;
   cursor: pointer;
   filter: brightness(180%);
-  /* width: 188px; */
 }
 
 .color-info {
@@ -22,22 +38,22 @@
   /* color: #4f4f51; */
   color: #888;
   position: absolute;
-  left: 285px;
-  top: 450px;
+  /* left: 285px;
+  top: 450px; */
+  left: 170px;
+  top: 340px;
   /* outline: 2px solid blue; */
-  font-family: "Cutive Mono", monospace;
   letter-spacing: 2px;
-  font-size: 14px;
+  font-size: 12px;
   opacity: 0;
   transition: all 1s ease;
 }
 
 .stage-text {
   color: #888;
-  font-family: "Cutive Mono", monospace;
-  width: 800px;
-  margin-left: 1000px;
+  margin-left: 780px;
   transition: all 0.3s ease;
+  margin-right: 80px;
 }
 
 .beige-text h1 {
@@ -63,4 +79,14 @@
 }
 .turquoise-text h1 {
   color: #0c6c68;
+}
+
+@media screen and (max-width: 1280px) {
+  .stage-text {
+    outline: 2px solid yellow;
+    margin-top: 800px;
+    margin-left: 100px;
+    margin-right: 10px;
+    width: 100%;
+  }
 }

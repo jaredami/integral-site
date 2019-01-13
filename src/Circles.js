@@ -8,10 +8,10 @@ class Circles extends Component {
 
     this.spacing = (2 * Math.PI) / 8;
     this.start = (225 * Math.PI) / 180;
-    this.radius = 300;
+    this.radius = 250;
     // this.xcenter = window.innerWidth / 2;
-    this.xcenter = 400;
-    this.ycenter = 400;
+    this.xcenter = 300;
+    this.ycenter = 300;
     this.step = 0.05;
     this.intervalTime = 100;
 
