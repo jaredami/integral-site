@@ -50,43 +50,55 @@ a {
 }
 
 .stage-text {
+  position: absolute;
   color: #888;
   margin-left: 780px;
   transition: all 0.3s ease;
   margin-right: 80px;
 }
 
-.beige-text h1 {
+.beige-text .stage-text-heading {
   color: #6c6753;
 }
-.purple-text h1 {
+.purple-text .stage-text-heading {
   color: #5c5672;
 }
-.red-text h1 {
+.red-text .stage-text-heading {
   color: #6d3130;
 }
-.blue-text h1 {
+.blue-text .stage-text-heading {
   color: #1e4e5a;
 }
-.orange-text h1 {
+.orange-text .stage-text-heading {
   color: #ac5e2e;
 }
-.green-text h1 {
+.green-text .stage-text-heading {
   color: #3e6c3d;
 }
-.yellow-text h1 {
+.yellow-text .stage-text-heading {
   color: #96792b;
 }
-.turquoise-text h1 {
+.turquoise-text .stage-text-heading {
   color: #0c6c68;
 }
 
 @media screen and (max-width: 1280px) {
   .stage-text {
-    outline: 2px solid yellow;
-    margin-top: 800px;
-    margin-left: 100px;
-    margin-right: 10px;
+    padding: 0px 100px;
+    margin-top: 450px;
+    margin-left: 0;
+    margin-right: 5%;
     width: 100%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.95);
+    /* border-top: 8px solid #888; */
+  }
+  .stage-text-heading {
+    text-align: center;
+  }
+}
+@media screen and (max-width: 760px) {
+  .stage-text {
+    padding: 0px 40px;
   }
 }

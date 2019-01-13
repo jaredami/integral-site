@@ -4,7 +4,7 @@ class GreenText extends Component {
   render() {
     return (
       <div className="green-text">
-        <h1>Green / HumanBond</h1>
+        <h1 className="stage-text-heading">Green / HumanBond</h1>
         <ul>
           <li>
             Promote a sense of community and unity - Focus on human bonding,

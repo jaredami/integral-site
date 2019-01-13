@@ -4,7 +4,7 @@ class PurpleText extends Component {
   render() {
     return (
       <div className="purple-text">
-        <h1>Purple / KinSpirits</h1>
+        <h1 className="stage-text-heading">Purple / KinSpirits</h1>
         <ul>
           <li>
             The world is imbued with spiritual/magical forces that determine

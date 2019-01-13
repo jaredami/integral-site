@@ -39,7 +39,11 @@ class StageInfo extends Component {
   }
 
   render() {
-    return <div className="color-info">{this.getStageInfo()}</div>;
+    return (
+      <div className="color-info" style={{ left: this.props.xcenter - 125 }}>
+        {this.getStageInfo()}
+      </div>
+    );
   }
 }
 
