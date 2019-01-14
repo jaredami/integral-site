@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import BeigeText from "./BeigeText";
-import PurpleText from "./PurpleText";
-import RedText from "./RedText";
-import BlueText from "./BlueText";
-import OrangeText from "./OrangeText";
-import GreenText from "./GreenText";
-import YellowText from "./YellowText";
-import TurquoiseText from "./TurquoiseText";
+import BeigeText from "./stage-text-components/BeigeText";
+import PurpleText from "./stage-text-components/PurpleText";
+import RedText from "./stage-text-components/RedText";
+import BlueText from "./stage-text-components/BlueText";
+import OrangeText from "./stage-text-components/OrangeText";
+import GreenText from "./stage-text-components/GreenText";
+import YellowText from "./stage-text-components/YellowText";
+import TurquoiseText from "./stage-text-components/TurquoiseText";
 
 class StageText extends Component {
   render() {

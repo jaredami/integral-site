@@ -19,28 +19,44 @@ class StageInfo extends Component {
 
     this.getStageInfo = this.getStageInfo.bind(this);
   }
+
   componentDidUpdate(prevProps) {
+    console.log("stage info updated");
     // if the color hovered over is different from the last color hovered over, set the color prop to that color
     if (this.props.color !== prevProps.color) {
       this.setState({
         hoveredColor: this.props.color
       });
     }
+    document.querySelector(".stage-info").style.opacity = 0;
+    setTimeout(function() {
+      document.querySelector(".stage-info").style.opacity = 1;
+    }, 500);
   }
 
   getStageInfo() {
     let colorName = this.state.hoveredColor;
-    return (
-      <div>
-        <h1>{this.StageInfo[`${colorName}`].stage}</h1>
-        <h2>{this.StageInfo[`${colorName}`].name}</h2>
-      </div>
-    );
+    if (colorName === "none") {
+      return (
+        <img
+          id="integral-circle"
+          src={require(`../images/integral-circle.png`)}
+          alt="integral"
+        />
+      );
+    } else {
+      return (
+        <div>
+          <h1>{this.StageInfo[`${colorName}`].stage}</h1>
+          <h2>{this.StageInfo[`${colorName}`].name}</h2>
+        </div>
+      );
+    }
   }
 
   render() {
     return (
-      <div className="color-info" style={{ left: this.props.xcenter - 125 }}>
+      <div className="stage-info" style={{ left: this.props.xcenter - 70 }}>
         {this.getStageInfo()}
       </div>
     );

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
 import Fade from "react-reveal/Fade";
-import StageInfo from "./StageInfo";
-import StageText from "./StageText";
+import StageInfo from "./components/StageInfo";
+import StageText from "./components/StageText";
 
 class App extends Component {
   constructor(props) {
@@ -37,7 +37,6 @@ class App extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  // lifecycle methods
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener("resize", this.updateWindowDimensions);
@@ -49,17 +48,17 @@ class App extends Component {
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateWindowDimensions);
   }
-
-  // functions
+  // sets the state of width and height to match window dimensions, then calls function which chnages display accordingly
   updateWindowDimensions() {
     this.setState({ width: window.innerWidth, height: window.innerHeight });
     console.log("width: " + this.state.width + " height: " + this.state.height);
     this.handleUpdatedWindowDimensions();
   }
+  // changes display depending on window dimensions
   handleUpdatedWindowDimensions() {
-    if (this.state.width < 1280) {
+    if (this.state.width < 1500) {
       this.setState({
-        xcenter: window.innerWidth / 2
+        xcenter: window.innerWidth / 2 - 75
       });
     } else {
       this.setState({
@@ -67,6 +66,7 @@ class App extends Component {
       });
     }
   }
+  // moves the circles around
   moveit() {
     let circles = document.querySelectorAll(".color-circle");
 
@@ -84,7 +84,6 @@ class App extends Component {
       circle.style.left = leftVal + "px"; // set the circle's left property to new value
     });
   }
-
   // get the top property for the current circle's style
   getTop() {
     this.start = this.start + this.spacing; // adds spacing so that the next circle gets placed appropriately
@@ -106,14 +105,12 @@ class App extends Component {
     this.setState({
       hoveredColor: event.target.name
     });
-    document.querySelector(".color-info").style.opacity = 1;
     clearInterval(this.interval);
   }
   handleMouseLeave() {
     this.setState({
       hoveredColor: "none"
     });
-    document.querySelector(".color-info").style.opacity = 0;
     this.interval = setInterval(this.moveit, this.intervalTime);
   }
   // when circle is clicked, update the set to that color name so that it can be sent as a prop to stageText
