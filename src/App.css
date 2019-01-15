@@ -53,11 +53,20 @@ a {
 
 .stage-text {
   position: absolute;
-  margin-left: 780px;
-  margin-right: 80px;
+  /* margin-left: 780px;
+  margin-right: 80px; */
+  /* width: 100%; */
+  margin: 730px auto 0;
+  /* margin-left: 0;
+  margin-right: 5%; */
+  padding: 0px 18vw;
   color: #888;
   font-size: 20px;
   transition: all 0.3s ease;
+}
+
+.stage-text-heading {
+  text-align: center;
 }
 
 .beige-text .stage-text-heading {
@@ -120,15 +129,15 @@ a {
 @media screen and (max-width: 1500px) {
   .stage-text {
     z-index: 10;
-    width: 100%;
+    /* width: 100%;
     margin-top: 730px;
     margin-left: 0;
-    margin-right: 5%;
+    margin-right: 5%; */
     padding: 0px 100px;
     background-color: rgba(0, 0, 0, 0.95);
   }
   .stage-text-heading {
-    text-align: center;
+    /* text-align: center; */
   }
 }
 @media screen and (max-width: 760px) {

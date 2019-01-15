@@ -17,7 +17,7 @@ class App extends Component {
     this.state = {
       width: 2000,
       height: 1000,
-      xcenter: 300,
+      xcenter: window.innerWidth / 2 - 75,
       ycenter: 300,
       hoveredColor: "none",
       selectedColor: "none",
@@ -56,15 +56,9 @@ class App extends Component {
   }
   // changes display depending on window dimensions
   handleUpdatedWindowDimensions() {
-    if (this.state.width < 1500) {
-      this.setState({
-        xcenter: window.innerWidth / 2 - 75
-      });
-    } else {
-      this.setState({
-        xcenter: 300
-      });
-    }
+    this.setState({
+      xcenter: window.innerWidth / 2 - 75
+    });
   }
   // moves the circles around
   moveit() {
