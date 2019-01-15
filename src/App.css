@@ -3,6 +3,7 @@
 }
 
 body {
+  color: #888;
   font-family: "Cutive Mono", monospace;
 }
 
@@ -34,14 +35,14 @@ a {
   font-size: 12px;
   letter-spacing: 2px;
   text-align: center;
-  transition: all 1s ease;
+  /* transition: all 1s ease; */
 }
 
 #integral-circle {
   margin-top: -40px;
   width: 160px;
   border-radius: 50%;
-  transition: all 0.3s ease;
+  /* transition: all 0.3s ease; */
 }
 
 #integral-circle:hover {
@@ -82,6 +83,38 @@ a {
 }
 .turquoise-text .stage-text-heading {
   color: #0c6c68;
+}
+
+/* appear - on page load */
+.fade-appear {
+  opacity: 0;
+  z-index: 1;
+}
+.fade-appear.fade-appear-active {
+  opacity: 1;
+  transition: opacity 1000ms linear 5000ms;
+}
+
+/* enter */
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms linear 300ms;
+}
+
+/* exit */
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transition: opacity 500ms linear;
+}
+.fade-exit-done {
+  opacity: 0;
 }
 
 @media screen and (max-width: 1500px) {

@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Spring } from "react-spring";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 class StageInfo extends Component {
   constructor(props) {
@@ -21,17 +23,12 @@ class StageInfo extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log("stage info updated");
     // if the color hovered over is different from the last color hovered over, set the color prop to that color
     if (this.props.color !== prevProps.color) {
       this.setState({
         hoveredColor: this.props.color
       });
     }
-    document.querySelector(".stage-info").style.opacity = 0;
-    setTimeout(function() {
-      document.querySelector(".stage-info").style.opacity = 1;
-    }, 500);
   }
 
   getStageInfo() {
@@ -56,9 +53,18 @@ class StageInfo extends Component {
 
   render() {
     return (
-      <div className="stage-info" style={{ left: this.props.xcenter - 70 }}>
-        {this.getStageInfo()}
-      </div>
+      <TransitionGroup className="card-container">
+        <CSSTransition key={this.props.color} timeout={1000} classNames="fade">
+          <div>
+            <div
+              className="stage-info"
+              style={{ left: this.props.xcenter - 70 }}
+            >
+              {this.getStageInfo()}
+            </div>
+          </div>
+        </CSSTransition>
+      </TransitionGroup>
     );
   }
 }

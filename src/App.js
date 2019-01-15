@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
-import Fade from "react-reveal/Fade";
 import StageInfo from "./components/StageInfo";
 import StageText from "./components/StageText";
+import Fade from "react-reveal/Fade";
 
 class App extends Component {
   constructor(props) {
@@ -111,6 +111,11 @@ class App extends Component {
     this.setState({
       hoveredColor: "none"
     });
+    // setTimeout(() => {
+    //   this.setState({
+    //     hoveredColor: "integral"
+    //   });
+    // }, 1000);
     this.interval = setInterval(this.moveit, this.intervalTime);
   }
   // when circle is clicked, update the set to that color name so that it can be sent as a prop to stageText
@@ -118,7 +123,6 @@ class App extends Component {
     this.setState({
       selectedColor: event.target.name
     });
-    console.log(this.state.selectedColor);
   }
 
   render() {
@@ -165,12 +169,12 @@ class App extends Component {
       <div className="App">
         <Fade>
           <div className="circle-container">{images}</div>
+          <StageInfo
+            color={this.state.hoveredColor}
+            xcenter={this.state.xcenter}
+          />
+          <StageText color={this.state.selectedColor} />
         </Fade>
-        <StageInfo
-          color={this.state.hoveredColor}
-          xcenter={this.state.xcenter}
-        />
-        <StageText color={this.state.selectedColor} />
       </div>
     );
   }
