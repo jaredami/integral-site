@@ -32,7 +32,7 @@ class App extends Component {
     );
     this.getTop = this.getTop.bind(this);
     this.getLeft = this.getLeft.bind(this);
-    this.moveit = this.moveit.bind(this);
+    this.moveCircles = this.moveCircles.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -41,7 +41,7 @@ class App extends Component {
   componentDidMount() {
     window.addEventListener("resize", this.updateWindowDimensions);
     this.updateWindowDimensions();
-    this.interval = setInterval(this.moveit, this.intervalTime);
+    this.moveCirclesInterval = setInterval(this.moveCircles, this.intervalTime);
   }
   componentDidUpdate() {
     this.start = (225 * Math.PI) / 180;
@@ -49,7 +49,6 @@ class App extends Component {
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateWindowDimensions);
   }
-
   // sets the state of width and height to match window dimensions, then calls function which chnages display accordingly
   updateWindowDimensions() {
     this.setState({ width: window.innerWidth, height: window.innerHeight });
@@ -63,7 +62,7 @@ class App extends Component {
     });
   }
   // moves the circles around
-  moveit() {
+  moveCircles() {
     let circles = document.querySelectorAll(".color-circle");
 
     circles.forEach(circle => {
@@ -101,13 +100,13 @@ class App extends Component {
     this.setState({
       hoveredColor: event.target.name
     });
-    clearInterval(this.interval);
+    clearInterval(this.moveCirclesInterval);
   }
   handleMouseLeave() {
     this.setState({
       hoveredColor: "none"
     });
-    this.interval = setInterval(this.moveit, this.intervalTime);
+    this.moveCirclesInterval = setInterval(this.moveCircles, this.intervalTime);
   }
   // when circle is clicked, update the set to that color name so that it can be sent as a prop to stageText
   handleClick(event) {
@@ -147,7 +146,7 @@ class App extends Component {
           data-pos={this.start} // store position of each circle for use in spin function
           src={require(`./images/${color}-circle.png`)}
           alt={color}
-          // style={{ top: this.getTop(), left: this.getLeft() }}
+          // style={{ top: this.topVal, left: this.leftVal }}
           style={{ top: this.getTop(), left: this.getLeft() }}
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
