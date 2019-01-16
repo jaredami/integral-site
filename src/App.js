@@ -11,7 +11,7 @@ class App extends Component {
 
     this.spacing = (2 * Math.PI) / 8;
     this.start = (225 * Math.PI) / 180;
-    this.radius = 250;
+    // this.radius = 250;
     this.step = 0.05;
     this.intervalTime = 100;
 
@@ -23,7 +23,8 @@ class App extends Component {
       hoveredColor: "none",
       selectedColor: "none",
       topVal: 0,
-      leftVal: 0
+      leftVal: 0,
+      radius: 250
     };
 
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
@@ -60,6 +61,17 @@ class App extends Component {
     this.setState({
       xcenter: window.innerWidth / 2 - 75
     });
+    if (this.state.width < 650) {
+      this.setState({
+        radius: 170,
+        ycenter: 200
+      });
+    } else if (this.state.radius !== 250) {
+      this.setState({
+        radius: 250,
+        ycenter: 300
+      });
+    }
   }
   // moves the circles around
   moveCircles() {
@@ -70,11 +82,13 @@ class App extends Component {
       let pos = prevPos + this.step; // add step to pos
       circle.setAttribute("data-pos", pos); // store pos in the circle's dataset
 
-      let topVal = Math.floor(this.state.ycenter + this.radius * Math.sin(pos));
+      let topVal = Math.floor(
+        this.state.ycenter + this.state.radius * Math.sin(pos)
+      );
       circle.style.top = topVal + "px"; // set the circle's top property to new value
 
       let leftVal = Math.floor(
-        this.state.xcenter + this.radius * Math.cos(pos)
+        this.state.xcenter + this.state.radius * Math.cos(pos)
       );
       circle.style.left = leftVal + "px"; // set the circle's left property to new value
     });
@@ -83,14 +97,14 @@ class App extends Component {
   getTop() {
     this.start = this.start + this.spacing; // adds spacing so that the next circle gets placed appropriately
     let top = Math.floor(
-      this.state.ycenter + this.radius * Math.sin(this.start)
+      this.state.ycenter + this.state.radius * Math.sin(this.start)
     );
     return top;
   }
   // get the left property for the current circle's style
   getLeft() {
     let left = Math.floor(
-      this.state.xcenter + this.radius * Math.cos(this.start)
+      this.state.xcenter + this.state.radius * Math.cos(this.start)
     );
     return left;
   }

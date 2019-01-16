@@ -54,12 +54,12 @@ a {
 .stage-text {
   position: absolute;
   margin: 730px auto 0;
-  padding: 0px 18vw;
+  padding: 0px 18vw 10px;
   background-color: black;
   opacity: 0.95;
   color: #888;
   font-size: 20px;
-  box-shadow: 0px 0px 300px 0px black;
+  /* box-shadow: 0px 0px 300px 0px black; */
   transition: all 0.3s ease;
   /* margin-left: 780px;
   margin-right: 80px; 
@@ -167,5 +167,24 @@ a {
 @media screen and (max-width: 760px) {
   .stage-text {
     padding: 0px 40px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .color-circle {
+    width: 100px;
+  }
+  .color-circle:hover {
+    width: 105px;
+    box-shadow: 0px 0px 0px 4px #4f4f51;
+  }
+  .stage-info {
+    top: 230px;
+    margin-left: 10px;
+    width: 220px;
+    font-size: 9px;
+    letter-spacing: 1.2px;
+  }
+  .stage-text {
+    margin: 500px auto 0;
   }
 }
