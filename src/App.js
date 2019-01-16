@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import StageInfo from "./components/StageInfo";
 import StageText from "./components/StageText";
+import ScrollButton from "./components/ScrollButton";
 import Fade from "react-reveal/Fade";
 
 class App extends Component {
@@ -38,8 +39,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.updateWindowDimensions();
     window.addEventListener("resize", this.updateWindowDimensions);
+    this.updateWindowDimensions();
     this.interval = setInterval(this.moveit, this.intervalTime);
   }
   componentDidUpdate() {
@@ -48,6 +49,7 @@ class App extends Component {
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateWindowDimensions);
   }
+
   // sets the state of width and height to match window dimensions, then calls function which chnages display accordingly
   updateWindowDimensions() {
     this.setState({ width: window.innerWidth, height: window.innerHeight });
@@ -105,11 +107,6 @@ class App extends Component {
     this.setState({
       hoveredColor: "none"
     });
-    // setTimeout(() => {
-    //   this.setState({
-    //     hoveredColor: "integral"
-    //   });
-    // }, 1000);
     this.interval = setInterval(this.moveit, this.intervalTime);
   }
   // when circle is clicked, update the set to that color name so that it can be sent as a prop to stageText
@@ -168,6 +165,7 @@ class App extends Component {
             xcenter={this.state.xcenter}
           />
           <StageText color={this.state.selectedColor} />
+          <ScrollButton />
         </Fade>
       </div>
     );
