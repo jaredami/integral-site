@@ -159,7 +159,7 @@ class App extends Component {
       });
     } else {
       this.setState({
-        selectedColor: this.colors[0]
+        selectedColor: this.colors[7]
       });
     }
   }

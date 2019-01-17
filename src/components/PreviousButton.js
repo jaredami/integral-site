@@ -10,7 +10,11 @@ class PreviousButton extends Component {
         onClick={this.props.handlePrevCLick}
       >
         <img
-          src={require(`../images/beige-next-arrow.png`)}
+          src={
+            this.props.color !== "none"
+              ? require(`../images/${this.props.color}-arrow.png`)
+              : require(`../images/beige-arrow.png`)
+          }
           alt="previous color button"
         />
       </button>
