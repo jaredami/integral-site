@@ -115,12 +115,23 @@ a {
 .btn:focus {
   outline: none;
 }
-#next-stage-btn {
+#prev-stage-btn {
   position: absolute;
-  /* right: 30vw; */
   z-index: 10;
   padding: 10px;
-  right: 30vw;
+  left: 20vw;
+  top: 720px;
+}
+#prev-stage-btn img {
+  width: 30px;
+  margin: auto;
+  transform: scaleX(-1);
+}
+#next-stage-btn {
+  position: absolute;
+  z-index: 10;
+  padding: 10px;
+  right: 20vw;
   top: 720px;
 }
 #next-stage-btn img {
@@ -175,6 +186,9 @@ a {
     margin-left: 0;
     margin-right: 5%; */
   }
+  #prev-stage-btn {
+    left: 10vw;
+  }
   #next-stage-btn {
     right: 10vw;
   }
@@ -182,14 +196,12 @@ a {
     left: 10px;
   }
 }
-@media screen and (max-width: 900px) {
-  #next-stage-btn {
-    right: 10vw;
-  }
-}
 @media screen and (max-width: 760px) {
   .stage-text {
     padding: 0px 40px;
+  }
+  #prev-stage-btn {
+    left: 10px;
   }
   #next-stage-btn {
     right: 10px;
@@ -212,6 +224,9 @@ a {
   }
   .stage-text {
     margin: 500px auto 0;
+  }
+  #prev-stage-btn {
+    top: 490px;
   }
   #next-stage-btn {
     top: 490px;

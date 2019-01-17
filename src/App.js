@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
 import StageInfo from "./components/StageInfo";
+import PreviousButton from "./components/PreviousButton";
 import NextButton from "./components/NextButton";
 import StageText from "./components/StageText";
-// import NextButton from "./components/NextButton";
 import ScrollButton from "./components/ScrollButton";
 import Fade from "react-reveal/Fade";
 
@@ -46,6 +46,7 @@ class App extends Component {
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
     this.handleCircleClick = this.handleCircleClick.bind(this);
+    this.handlePrevClick = this.handlePrevClick.bind(this);
     this.handleNextClick = this.handleNextClick.bind(this);
   }
 
@@ -147,6 +148,21 @@ class App extends Component {
       selectedColor: event.target.name
     });
   }
+  handlePrevClick() {
+    console.log(this.colors.indexOf(this.state.selectedColor));
+    let indexOfCurrentSelectedColor = this.colors.indexOf(
+      this.state.selectedColor
+    );
+    if (indexOfCurrentSelectedColor > 0) {
+      this.setState({
+        selectedColor: this.colors[indexOfCurrentSelectedColor - 1]
+      });
+    } else {
+      this.setState({
+        selectedColor: this.colors[0]
+      });
+    }
+  }
   handleNextClick() {
     console.log(this.colors.indexOf(this.state.selectedColor));
     let indexOfCurrentSelectedColor = this.colors.indexOf(
@@ -192,6 +208,10 @@ class App extends Component {
             xcenter={this.state.xcenter}
           />
           <StageText color={this.state.selectedColor} />
+          <PreviousButton
+            color={this.state.selectedColor}
+            handlePrevCLick={this.handlePrevClick}
+          />
           <NextButton
             color={this.state.selectedColor}
             handleNextCLick={this.handleNextClick}

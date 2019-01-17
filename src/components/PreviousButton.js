@@ -1,28 +1,28 @@
 import React, { Component } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
-class NextButton extends Component {
+class PreviousButton extends Component {
   render() {
-    const nextButton = (
+    const prevButton = (
       <button
-        id="next-stage-btn"
+        id="prev-stage-btn"
         className="btn"
-        onClick={this.props.handleNextCLick}
+        onClick={this.props.handlePrevCLick}
       >
         <img
           src={require(`../images/beige-next-arrow.png`)}
-          alt="next color button"
+          alt="previous color button"
         />
       </button>
     );
     return (
       <TransitionGroup>
         <CSSTransition key={this.props.color} timeout={1000} classNames="fade">
-          {this.props.color !== "none" ? nextButton : <div />}
+          {this.props.color !== "none" ? prevButton : <div />}
         </CSSTransition>
       </TransitionGroup>
     );
   }
 }
 
-export default NextButton;
+export default PreviousButton;
