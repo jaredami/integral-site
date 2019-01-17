@@ -1,20 +1,29 @@
 import React, { Component } from "react";
 import "./App.css";
 import StageInfo from "./components/StageInfo";
+import NextButton from "./components/NextButton";
 import StageText from "./components/StageText";
+// import NextButton from "./components/NextButton";
 import ScrollButton from "./components/ScrollButton";
 import Fade from "react-reveal/Fade";
 
 class App extends Component {
   constructor(props) {
     super(props);
-
+    this.colors = [
+      "beige",
+      "purple",
+      "red",
+      "blue",
+      "orange",
+      "green",
+      "yellow",
+      "turquoise"
+    ];
     this.spacing = (2 * Math.PI) / 8;
     this.start = (225 * Math.PI) / 180;
-    // this.radius = 250;
     this.step = 0.05;
     this.intervalTime = 100;
-
     this.state = {
       width: 2000,
       height: 1000,
@@ -36,21 +45,27 @@ class App extends Component {
     this.moveCircles = this.moveCircles.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleCircleClick = this.handleCircleClick.bind(this);
+    this.handleNextClick = this.handleNextClick.bind(this);
   }
 
   componentDidMount() {
+    // listen for window resize, call function to handle any changes
     window.addEventListener("resize", this.updateWindowDimensions);
     this.updateWindowDimensions();
+    // start the circles spinning
     this.moveCirclesInterval = setInterval(this.moveCircles, this.intervalTime);
+    console.log(this.circlesArr);
   }
   componentDidUpdate() {
+    // without this, the circles reset to their position on the inital render every time the spinning restarts
     this.start = (225 * Math.PI) / 180;
   }
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateWindowDimensions);
   }
-  // sets the state of width and height to match window dimensions, then calls function which chnages display accordingly
+
+  // sets the state of width and height to match window dimensions, then calls function which changes display accordingly
   updateWindowDimensions() {
     this.setState({ width: window.innerWidth, height: window.innerHeight });
     console.log("width: " + this.state.width + " height: " + this.state.height);
@@ -58,9 +73,11 @@ class App extends Component {
   }
   // changes display depending on window dimensions
   handleUpdatedWindowDimensions() {
+    // move the x-coord of the center of circles so that its always in the center of the screen
     this.setState({
       xcenter: window.innerWidth / 2 - 75
     });
+    // make radius of circle of circles smaller on small screen widths and adjust the center
     if (this.state.width < 650) {
       this.setState({
         radius: 170,
@@ -73,10 +90,27 @@ class App extends Component {
       });
     }
   }
-  // moves the circles around
+
+  // get the top property for the current circle
+  getTop() {
+    this.start = this.start + this.spacing; // adds spacing so that the next circle gets placed appropriately
+    let top = Math.floor(
+      this.state.ycenter + this.state.radius * Math.sin(this.start)
+    );
+    return top;
+  }
+  // get the left property for the current circle
+  getLeft() {
+    let left = Math.floor(
+      this.state.xcenter + this.state.radius * Math.cos(this.start)
+    );
+    return left;
+  }
+  // moves the circles one step
   moveCircles() {
     let circles = document.querySelectorAll(".color-circle");
 
+    // set the values to be used in placing each circle
     circles.forEach(circle => {
       let prevPos = parseFloat(circle.dataset.pos); // convert the current pos to a float
       let pos = prevPos + this.step; // add step to pos
@@ -93,22 +127,6 @@ class App extends Component {
       circle.style.left = leftVal + "px"; // set the circle's left property to new value
     });
   }
-  // get the top property for the current circle's style
-  getTop() {
-    this.start = this.start + this.spacing; // adds spacing so that the next circle gets placed appropriately
-    let top = Math.floor(
-      this.state.ycenter + this.state.radius * Math.sin(this.start)
-    );
-    return top;
-  }
-  // get the left property for the current circle's style
-  getLeft() {
-    let left = Math.floor(
-      this.state.xcenter + this.state.radius * Math.cos(this.start)
-    );
-    return left;
-  }
-
   // on mouse-over, set the state of hoverColor to the color being moused over so it can be passed as a prop to StageInfo
   handleMouseEnter(event) {
     this.setState({
@@ -116,42 +134,38 @@ class App extends Component {
     });
     clearInterval(this.moveCirclesInterval);
   }
+  // when mouse leaves circle, reset the state of hoverColor so StageInfo can respond accoridngly
   handleMouseLeave() {
     this.setState({
       hoveredColor: "none"
     });
     this.moveCirclesInterval = setInterval(this.moveCircles, this.intervalTime);
   }
-  // when circle is clicked, update the set to that color name so that it can be sent as a prop to stageText
-  handleClick(event) {
+  // when circle is clicked, update the state of selectedColor to that color name so that it can be sent as a prop to stageText
+  handleCircleClick(event) {
     this.setState({
       selectedColor: event.target.name
     });
   }
+  handleNextClick() {
+    console.log(this.colors.indexOf(this.state.selectedColor));
+    let indexOfCurrentSelectedColor = this.colors.indexOf(
+      this.state.selectedColor
+    );
+    if (indexOfCurrentSelectedColor < 7) {
+      this.setState({
+        selectedColor: this.colors[indexOfCurrentSelectedColor + 1]
+      });
+    } else {
+      this.setState({
+        selectedColor: this.colors[0]
+      });
+    }
+  }
 
   render() {
-    let colors = [
-      "beige",
-      "purple",
-      "red",
-      "blue",
-      "orange",
-      "green",
-      "yellow",
-      "turquoise"
-    ];
-
-    // loop through each color and retrieve the correct image and call getTop() and getLeft() to determine its placement
-    let images = colors.map(color => {
-      // [replaces call to getTop and getLeft in style of each img with this stuff (might be worse)]
-      // this.start = this.start + this.spacing;
-      // let topVal = Math.floor(
-      //   this.state.ycenter + this.radius * Math.sin(this.start)
-      // );
-      // let leftVal = Math.floor(
-      //   this.state.xcenter + this.radius * Math.cos(this.start)
-      // );
-
+    // loop through each color and retrieve the correct image; call getTop() and getLeft() to determine its placement
+    let images = this.colors.map(color => {
       return (
         <img
           className="color-circle"
@@ -164,7 +178,7 @@ class App extends Component {
           style={{ top: this.getTop(), left: this.getLeft() }}
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
-          onClick={this.handleClick}
+          onClick={this.handleCircleClick}
         />
       );
     });
@@ -178,6 +192,10 @@ class App extends Component {
             xcenter={this.state.xcenter}
           />
           <StageText color={this.state.selectedColor} />
+          <NextButton
+            color={this.state.selectedColor}
+            handleNextCLick={this.handleNextClick}
+          />
           <ScrollButton />
         </Fade>
       </div>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import NextButton from "./NextButton";
 import BeigeText from "./stage-text-components/BeigeText";
 import PurpleText from "./stage-text-components/PurpleText";
 import RedText from "./stage-text-components/RedText";
@@ -51,6 +52,7 @@ class StageText extends Component {
       <TransitionGroup className="card-container">
         <CSSTransition key={this.props.color} timeout={1000} classNames="fade">
           <div className="stage-text">
+            {/* <NextButton color={this.state.selectedColor} /> */}
             {this.getStageText(this.props.color)}
           </div>
         </CSSTransition>

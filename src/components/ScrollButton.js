@@ -37,7 +37,7 @@ class ScrollButton extends Component {
 
   render() {
     const scrollButton = (
-      <button className="scrollToTopBtn" onClick={this.scrollToTop}>
+      <button id="scroll-to-top-btn" className="btn" onClick={this.scrollToTop}>
         ^
       </button>
     );
