@@ -98,27 +98,34 @@ a {
 }
 
 .btn {
-  padding: 0px 10px 0px;
+  /* padding: 0px 10px 0px; */
   z-index: 10;
+  /* width: 50px; */
+  box-sizing: border-box;
+  height: 100px;
   font-family: "Cutive Mono", monospace;
   color: #888;
   font-size: 5rem;
   background: transparent;
-  border-radius: 30%;
+  border-radius: 20%;
   border: none;
   transition: all ease 300ms;
 }
 .btn:hover {
   cursor: pointer;
   filter: brightness(180%);
+  border: 2px solid #4f4f51;
 }
 .btn:focus {
   outline: none;
 }
+.btn img {
+  top: -20px;
+}
 #prev-stage-btn {
   position: absolute;
   z-index: 10;
-  padding: 10px;
+  /* padding: 10px; */
   left: 20vw;
   top: 720px;
 }
@@ -130,7 +137,7 @@ a {
 #next-stage-btn {
   position: absolute;
   z-index: 10;
-  padding: 10px;
+  /* padding: 10px; */
   right: 20vw;
   top: 720px;
 }
@@ -140,8 +147,15 @@ a {
 }
 #scroll-to-top-btn {
   position: fixed;
-  left: 10vw;
+  /* left: 10vw; */
+  left: 49vw;
   bottom: 0px;
+  background-color: black;
+  border: 2px solid #888;
+}
+#scroll-to-top-btn img {
+  transform: rotate(270deg);
+  width: 30px;
 }
 
 /* appear - on page load */

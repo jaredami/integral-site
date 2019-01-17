@@ -38,7 +38,14 @@ class ScrollButton extends Component {
   render() {
     const scrollButton = (
       <button id="scroll-to-top-btn" className="btn" onClick={this.scrollToTop}>
-        ^
+        <img
+          src={
+            this.props.color !== "none"
+              ? require(`../images/${this.props.color}-arrow.png`)
+              : require(`../images/beige-arrow.png`)
+          }
+          alt="scroll to top arrow"
+        />
       </button>
     );
     return this.state.scrollButtonVisible ? scrollButton : <div />;

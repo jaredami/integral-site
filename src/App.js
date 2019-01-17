@@ -216,7 +216,7 @@ class App extends Component {
             color={this.state.selectedColor}
             handleNextCLick={this.handleNextClick}
           />
-          <ScrollButton />
+          <ScrollButton color={this.state.selectedColor} />
         </Fade>
       </div>
     );
