@@ -35,7 +35,7 @@ a {
   font-size: 12px;
   letter-spacing: 2px;
   text-align: center;
-  /* transition: all 1s ease; */
+  transition: all 1s ease;
 }
 
 #integral-circle {
@@ -57,16 +57,9 @@ a {
   margin: 730px auto 0;
   padding: 0px 18vw 10px;
   background-color: black;
-  /* opacity: 0.95; */
   color: #888;
   font-size: 20px;
-  /* box-shadow: 0px 0px 300px 0px black; */
   transition: all 0.3s ease;
-  /* margin-left: 780px;
-  margin-right: 80px; 
-  width: 100%; 
-  margin-left: 0;
-  margin-right: 5%; */
 }
 
 .stage-text-heading {
@@ -99,9 +92,7 @@ a {
 }
 
 .btn {
-  /* padding: 0px 10px 0px; */
   z-index: 10;
-  /* width: 50px; */
   box-sizing: border-box;
   height: 100px;
   font-family: "Cutive Mono", monospace;
@@ -125,7 +116,6 @@ a {
 #prev-stage-btn {
   position: absolute;
   z-index: 10;
-  /* padding: 10px; */
   left: 20vw;
   top: 720px;
 }
@@ -137,7 +127,6 @@ a {
 #next-stage-btn {
   position: absolute;
   z-index: 10;
-  /* padding: 10px; */
   right: 20vw;
   top: 720px;
 }
@@ -190,13 +179,7 @@ a {
 
 @media screen and (max-width: 1500px) {
   .stage-text {
-    /* z-index: 1; */
     padding: 0px 100px;
-    /* background-color: rgba(0, 0, 0, 0.95); */
-    /* width: 100%;
-    margin-top: 730px;
-    margin-left: 0;
-    margin-right: 5%; */
   }
   #prev-stage-btn {
     left: 10vw;
