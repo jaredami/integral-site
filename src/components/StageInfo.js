@@ -19,8 +19,6 @@ class StageInfo extends Component {
       yellow: { stage: "Stage 7: Yellow", name: "Integrated Self" },
       turquoise: { stage: "Stage 8: Turquoise", name: "Global Order" }
     };
-
-    // this.getStageInfo = this.getStageInfo.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -31,26 +29,6 @@ class StageInfo extends Component {
       });
     }
   }
-
-  // getStageInfo() {
-  //   let colorName = this.state.hoveredColor;
-  //   if (colorName === "none") {
-  //     return (
-  //       <img
-  //         id="integral-circle"
-  //         src={require(`../images/integral-circle.png`)}
-  //         alt="integral"
-  //       />
-  //     );
-  //   } else {
-  //     return (
-  //       <div>
-  //         <h1>{this.StageInfo[`${colorName}`].stage}</h1>
-  //         <h2>{this.StageInfo[`${colorName}`].name}</h2>
-  //       </div>
-  //     );
-  //   }
-  // }
 
   render() {
     return (

@@ -3,27 +3,29 @@ import React, { Component } from "react";
 class ScrollButton extends Component {
   constructor(props) {
     super(props);
-
     this.state = { scrollButtonVisible: false };
-    this.scrollToTop = this.scrollToTop.bind(this);
-    this.handleScroll = this.handleScroll.bind(this);
   }
 
+  // listen for scrolling events and call function to handle them
   componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
   }
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
   }
-  scrollToTop() {
+
+  // scrolls to top left of page
+  scrollToTop = () => {
     console.log("scroll");
     window.scroll({
       top: 0,
       left: 0,
       behavior: "smooth"
     });
-  }
-  handleScroll() {
+  };
+
+  // if user has scrolled down by more than 700px, show the scroll to top button
+  handleScroll = () => {
     if (window.pageYOffset > 700) {
       this.setState({
         scrollButtonVisible: true
@@ -33,7 +35,7 @@ class ScrollButton extends Component {
         scrollButtonVisible: false
       });
     }
-  }
+  };
 
   render() {
     const scrollButton = (

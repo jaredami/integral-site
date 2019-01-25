@@ -4,11 +4,14 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 class IntegralCircle extends Component {
   constructor(props) {
     super(props);
+
+    // value of visible state determines whether IntegralCircle is displayed
     this.state = {
       visible: false
     };
   }
 
+  // when color prop updates, if it changes to "none" (no color being hovered), display IntegralCircle; hide it otherwise
   componentDidUpdate(prevProps) {
     if (this.props.color !== prevProps.color) {
       if (this.props.color === "none") {
@@ -26,6 +29,7 @@ class IntegralCircle extends Component {
       }
     }
   }
+
   render() {
     const integralCircle = (
       <img

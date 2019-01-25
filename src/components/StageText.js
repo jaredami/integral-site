@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import NextButton from "./NextButton";
 import BeigeText from "./stage-text-components/BeigeText";
 import PurpleText from "./stage-text-components/PurpleText";
 import RedText from "./stage-text-components/RedText";
@@ -14,12 +13,11 @@ class StageText extends Component {
   constructor(props) {
     super(props);
 
+    // state to recieved App's selected color state as color prop
     this.state = { selectedColor: "none" };
   }
 
-  componentDidMount() {
-    console.log("stage text moutned");
-  }
+  // when color props changes (because App's selectedColor state has changed), set the selected color state to that color
   componentDidUpdate(prevProps) {
     if (this.props.color !== prevProps.color) {
       this.setState({
@@ -28,7 +26,8 @@ class StageText extends Component {
     }
   }
 
-  getStageText(color) {
+  // returns the appropriate text component depending on the color passed in
+  getStageText = color => {
     if (color === "beige") {
       return <BeigeText />;
     } else if (color === "purple") {
@@ -46,13 +45,12 @@ class StageText extends Component {
     } else if (color === "turquoise") {
       return <TurquoiseText />;
     }
-  }
+  };
   render() {
     return (
       <TransitionGroup className="card-container">
         <CSSTransition key={this.props.color} timeout={1000} classNames="fade">
           <div className="stage-text">
-            {/* <NextButton color={this.state.selectedColor} /> */}
             {this.getStageText(this.props.color)}
           </div>
         </CSSTransition>
