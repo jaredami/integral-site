@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import StageInfo from "./components/StageInfo";
+import IntegralCircle from "./components/IntegralCircle";
 import PreviousButton from "./components/PreviousButton";
 import NextButton from "./components/NextButton";
 import StageText from "./components/StageText";
@@ -203,6 +204,10 @@ class App extends Component {
       <div className="App">
         <Fade>
           <div className="circle-container">{images}</div>
+          <IntegralCircle
+            color={this.state.hoveredColor}
+            xcenter={this.state.xcenter}
+          />
           <StageInfo
             color={this.state.hoveredColor}
             xcenter={this.state.xcenter}
