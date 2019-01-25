@@ -21,13 +21,15 @@ class App extends Component {
       "yellow",
       "turquoise"
     ];
+
+    // values used in setting up the circle of circles
     this.spacing = (2 * Math.PI) / 8;
     this.start = (225 * Math.PI) / 180;
     this.step = 0.05;
     this.intervalTime = 100;
+
     this.state = {
       width: 2000,
-      height: 1000,
       xcenter: window.innerWidth / 2 - 75,
       ycenter: 300,
       hoveredColor: "none",
@@ -67,10 +69,9 @@ class App extends Component {
     window.removeEventListener("resize", this.updateWindowDimensions);
   }
 
-  // sets the state of width and height to match window dimensions, then calls function which changes display accordingly
+  // sets the state of width to match window width, then calls function which changes display accordingly
   updateWindowDimensions() {
-    this.setState({ width: window.innerWidth, height: window.innerHeight });
-    console.log("width: " + this.state.width + " height: " + this.state.height);
+    this.setState({ width: window.innerWidth });
     this.handleUpdatedWindowDimensions();
   }
   // changes display depending on window dimensions
