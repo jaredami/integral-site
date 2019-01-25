@@ -5,7 +5,9 @@ class StageInfo extends Component {
   constructor(props) {
     super(props);
 
+    // hoveredColor state gets determined by the color prop sent down from App's hoveredColor state
     this.state = { hoveredColor: "none" };
+    // array storing the text to be displayed depending on the color circle being hovered
     this.StageInfo = {
       none: { stage: "", name: "" },
       beige: { stage: "Stage 1: Beige", name: "Survival Self" },
