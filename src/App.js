@@ -105,7 +105,7 @@ class App extends Component {
     // set the values to be used in placing each circle
     circles.forEach(circle => {
       let prevPosition = parseFloat(circle.dataset.position); // convert the previous position to a float
-      let position = prevPosition + this.step; // add step to position
+      let position = prevPosition + this.step; // add step to prevPosition to get new position
       circle.setAttribute("data-position", position); // store position in the circle's dataset
 
       let topVal = Math.floor(
